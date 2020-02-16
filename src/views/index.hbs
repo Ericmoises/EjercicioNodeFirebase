@@ -1,0 +1,124 @@
+<!--     https://www.youtube.com/watch?v=b6KJ7FSMifw&t=312s       --->
+<div class="col-md-6 offset-md-3">
+    <div class="card">
+        <div class="card-header">
+            <h1>Usuarios</h1>
+        </div>
+
+        <div class="card-footer">
+            <form action="/new_user" method="POST"> 
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Nombre(s)" class="form-control" autofocus>
+                </div>
+                 <div class="form-group">
+                    <input type="text" name="lastname" placeholder="Prim. Apellido" class="form-control">
+                </div> 
+                <div class="form-group">
+                    <input type="text" name="lastname2" placeholder="Seg. Apellido" class="form-control">
+                </div> 
+                <div class="form-group">
+                    <input type="text" name="email" placeholder="Email" class="form-control">
+                </div>
+                 <div class="form-group">
+                    <input type="text" name="phone" placeholder="Teléfono" class="form-control">
+                </div>
+                <button class="btn btn-primary btn-block">Agregar</button>
+            </form>
+        </div>
+        
+        <div class="card-body">
+            {{#if users}}
+                <ul class="list-group">
+                {{#each users}}
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                      {{name}}
+                      {{firstSurname}} 
+                      {{secondSurname}} /
+                      {{contact.phone}} /
+                      {{contact.email}}
+                      <a href="/delete-user/{{@key}}" class="btn btn-danger">Eliminar</a>
+                  </li>
+                {{/each}}
+                </ul>
+           
+            {{else}}
+            <p>No hay Usuarios aún.</p>
+            {{/if}}
+        </div>
+    </div>
+ </div>
+
+
+
+<div class="col-md-6 offset-md-3">
+    <div class="card">
+        <div class="card-header">
+            <h1>Eventos</h1>
+        </div>
+
+        <div class="card-footer">
+            <form action="/new_event" method="POST"> 
+                <div class="form-group">
+                    <input type="text" name="eventName" placeholder="Nombre del Evento" class="form-control" autofocus>
+                </div>
+                 <div class="form-group">
+                    <input type="text" name="eventDescription" placeholder="Descripción del Evento" class="form-control">
+                </div> 
+                <div class="form-group">
+                    <input type="date" name="startDate" placeholder="Fecha" class="form-control">
+                </div> 
+                <div class="form-group">
+                    <input type="time" name="endDate" placeholder="Hora" class="form-control">
+                </div>
+                 <div class="form-group">
+                    <input type="text" name="address" placeholder="Domicilio" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="address2" placeholder="Referencias" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" name="city" placeholder="Ciudad" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="country" placeholder="País" class="form-control">
+                </div>
+                <button class="btn btn-primary btn-block">Agregar</button>
+            </form>
+        </div>
+
+        <div class="card-body">
+            {{#if events}}
+                <ul class="list-group">
+                {{#each events}}
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                      {{name}}
+                      {{description}} 
+                      {{startDate}} 
+                      {{endDate}} 
+                      {{address}}
+                      {{address2}}
+                      {{city}}
+                      {{country}}
+                      <a href="/delete-event/{{@key}}" class="btn btn-danger">Eliminar</a>
+                  </li>
+                {{/each}}
+                </ul>
+           
+            {{else}}
+            <p>No hay Eventos aún.</p>
+            {{/if}}
+        </div>
+    
+
+
+        <div class="card-footer">
+            <form action="/beneficiaries" method="POST"> 
+                <input type="file" id="fileUploader" name="fileUploader" accept=".xls, .xlsx" class="form-control my-3"/>
+               <button class="btn btn-primary btn-block">Add</button>
+            </form>
+        </div>
+        <div>
+            <label id="jsonObject"> JSON : </label>
+        </div>
+</div >
